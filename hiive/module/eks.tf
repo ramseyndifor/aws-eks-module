@@ -27,7 +27,7 @@ resource "aws_eks_node_group" "eks_node_group" {
 
   instance_types = ["t3.medium"]
   remote_access {
-    ec2_ssh_key               = null
+    ec2_ssh_key               = aws_key_pair.eks_key_pair.key_name
     source_security_group_ids = [aws_security_group.eks_nodes.id]
   }
 
