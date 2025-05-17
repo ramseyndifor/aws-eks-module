@@ -21,3 +21,9 @@ variable "container_image" {
   type = string
   default = "nginx:latest"
 }
+
+variable "user_arn" {
+  description = "arn of user for access to cluster resources"
+  type = string
+  default = ""
+}

@@ -15,6 +15,12 @@ variable "vpc_cidr" {
   default = ""
 }
 
+variable "user_arn" {
+  description = "arn of admin user for access to the eks cluster"
+  type = string
+  default = ""
+}
+
 variable "container_image" {
   description = "container image for eks cluster"
   type = string
