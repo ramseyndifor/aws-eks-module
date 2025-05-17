@@ -3,12 +3,12 @@
 ##########################################
 
 resource "aws_iam_role" "eks" {
-  name = "${project_name}-eks-role"
+  name = "${var.project_name}-eks-role"
   assume_role_policy = data.aws_iam_policy_document.eks_assume.json
 }
 
 resource "aws_iam_role" "node" {
-  name = "${project_name}-node-role"
+  name = "${var.project_name}-node-role"
   assume_role_policy = data.aws_iam_policy_document.node_assume.json
 }
 

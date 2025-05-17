@@ -15,27 +15,27 @@ data "aws_eks_cluster_auth" "cluster" {
 
 resource "kubernetes_deployment" "app" {
   metadata {
-    name = "${project_name}-app"
+    name = "${var.project_name}-app"
     labels = {
-      app = "${project_name}"
+      app = var.project_name
     }
   }
   spec {
     replicas = 2
     selector {
       match_labels = {
-        app = "${project_name}"
+        app = var.project_name
       }
     }
     template {
       metadata {
         labels = {
-          app = "${project_name}"
+          app = var.project_name
         }
       }
       spec {
         container {
-          name  = "${project_name}-container"
+          name  = "${var.project_name}-container"
           image = var.container_image
           port {
             container_port = 80
@@ -48,11 +48,11 @@ resource "kubernetes_deployment" "app" {
 
 resource "kubernetes_service" "app" {
   metadata {
-    name = "${project_name}-service"
+    name = "${var.project_name}-service"
   }
   spec {
     selector = {
-      app = "${project_name}"
+      app = var.project_name
     }
     type = "LoadBalancer"
     port {
