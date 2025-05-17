@@ -18,7 +18,7 @@ variable "vpc_cidr" {
 variable "user_arn" {
   description = "arn of admin user for access to the eks cluster"
   type = string
-  default = ""
+  default = "arn:aws:iam::489062853934:user/Ramsey"
 }
 
 variable "container_image" {
