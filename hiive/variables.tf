@@ -15,12 +15,6 @@ variable "vpc_cidr" {
   default = ""
 }
 
-variable "cluster_name" {
-  description = "cluster name"
-  type = string
-  default = ""
-}
-
 variable "container_image" {
   description = "container image for eks cluster"
   type = string

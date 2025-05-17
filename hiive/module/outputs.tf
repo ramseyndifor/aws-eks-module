@@ -20,6 +20,14 @@ output "vpc_id" {
   value = aws_vpc.main.id
 }
 
+output "eks_node_sg_id" {
+  value = aws_security_group.eks_nodes.id
+}
+
+output "eks_cluster_sg_id" {
+  value = aws_security_group.eks_cluster.id
+}
+
 # EKS outputs
 output "cluster_endpoint" {
   value = aws_eks_cluster.eks_cluster.endpoint

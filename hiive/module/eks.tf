@@ -4,6 +4,8 @@ resource "aws_eks_cluster" "eks_cluster" {
 
   vpc_config {
     subnet_ids = aws_subnet.private[*].id
+    security_group_ids      = [aws_security_group.eks_cluster.id]
+    endpoint_public_access  = true
   }
 
   depends_on = [
@@ -25,6 +27,10 @@ resource "aws_eks_node_group" "eks_node_group" {
   }
 
   instance_types = ["t3.medium"]
+  remote_access {
+    ec2_ssh_key               = null
+    source_security_group_ids = [aws_security_group.eks_nodes.id]
+  }
 
   depends_on = [
     aws_iam_role_policy_attachment.node_AmazonEKSWorkerNodePolicy,
