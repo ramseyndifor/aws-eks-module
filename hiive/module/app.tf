@@ -44,6 +44,7 @@ resource "kubernetes_deployment" "app" {
       }
     }
   }
+  depends_on = [ aws_eks_node_group.eks_node_group ]
 }
 
 resource "kubernetes_service" "app" {
@@ -60,4 +61,6 @@ resource "kubernetes_service" "app" {
       target_port = 80
     }
   }
+
+  depends_on = [ aws_eks_node_group.eks_node_group ]
 }
