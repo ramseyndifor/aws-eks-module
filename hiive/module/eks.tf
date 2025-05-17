@@ -2,6 +2,10 @@ resource "aws_eks_cluster" "eks_cluster" {
   name     = "${var.project_name}-cluster"
   role_arn = aws_iam_role.eks.arn
 
+  access_config {
+    authentication_mode = "CONFIG_MAP"
+  }
+
   vpc_config {
     subnet_ids = aws_subnet.private[*].id
     security_group_ids      = [aws_security_group.eks_cluster.id]
