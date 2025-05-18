@@ -7,6 +7,7 @@ variable "region" {
 variable "project_name" {
   description = "project name"
   type = string
+  default = ""
 }
 
 variable "vpc_cidr" {
@@ -18,13 +19,13 @@ variable "vpc_cidr" {
 variable "user_arn" {
   description = "arn of admin user for access to the eks cluster"
   type = string
-  default = "arn:aws:iam::489062853934:user/Ramsey"
+  default = ""
 }
 
 variable "container_image" {
   description = "container image for eks cluster"
   type = string
-  default = "nginx:latest"
+  default = ""
 }
 
 variable "eks_node_policies" {
